@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Certificate{% endblock %}
+
+{% block body %}
+
+
+
+        {% if certificate == false %}
+
+
+            <div class="row mt-4 mx-2">
+                <div class="col-auto">
+                    <p class="text-danger translate" i18n="error">Erreur :</p>
+                </div>
+                <div class="col-auto">
+                    <p class="text-danger translate" i18n="cert_not_found" id="error_dsp">Certificat non trouvé</p>
+                </div>
+            </div>
+
+
+        {% else %}
+            
+            
+            <div class="row mt-4 mx-2 d-none">
+                <div class="col-auto">
+                    <p class="text-danger translate" i18n="error">Error :</p>
+                </div>
+                <div class="col-auto">
+                    <p class="text-danger translate" i18n="" id="error_dsp">undefined</p>
+                </div>
+            </div>
+            <div class="row mt-4 mx-2">
+                <p class="text-success translate" i18n="success" id="success_dsp">Scanned certificate :</p>
+            </div>
+            <div class="row mx-2" id="cert_table">
+                <table class="table table-striped table-hover">
+                    <tbody>
+                        <tr>
+                            <td><b class="translate" i18n="surname">Surname :</b></td>
+                            <td class="certificate" id="surname">{{ certificate.Surname }}</td>
+                        </tr>
+                        <tr>
+                            <td><b class="translate" i18n="name">Name :</b></td>
+                            <td class="certificate" id="name">{{ certificate.name }}</td>
+                        </tr>
+                        <tr>
+                            <td><b class="translate" i18n="birth_date">Birth date :</b></td>
+                            <td class="certificate translate-date" i18nlive="19-11-1994" id="birth">{{ certificate.birthDate ? certificate.birthDate|date('F d, Y') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <td><b class="translate" i18n="result">Result :</b></td>
+                            <td class="certificate" id="result">{{ certificate.result ? 'Positif' : 'Negatif' }}</td>
+                        </tr>
+                        <tr>
+                            <td><b class="translate" i18n="sample_date">Sample date :</b></td>
+                            <td class="certificate translate-date" i18nlive="15-12-2021" id="sampledate">{{ certificate.sampleDate ? certificate.sampleDate|date('F d, Y') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <td><b class="translate" i18n="test_nb">Test number :</b></td>
+                            <td class="certificate" id="nb">{{ certificate.testNumber }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-auto">
+            {% if qrcode %}
+                <img class="" src="{{ qrcode }}" alt="copile qrcode"/>
+            {% endif %}
+            </div>
+            
+        {% endif %}
+
+
+{% endblock %}
