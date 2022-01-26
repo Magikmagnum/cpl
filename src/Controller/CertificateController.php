@@ -82,6 +82,23 @@ class CertificateController extends AbstractController
 
 
 
+    #[Route('/', name: 'certificate_show', methods: ['GET'])]
+    /**
+     * Undocumented function
+     *
+     * @param Certificate $certificate
+     * @param QrcodeServices $qrcodeService
+     * @return Response
+     */
+    public function public_show_n(): Response
+    {
+        return $this->render('certificate/show.html.twig', [
+            'certificate' => null
+        ]);
+    }
+
+
+
     #[Route("/q=-8LauRaPdGtn07BqRXYdIqpOpx6hoYMydx8exOH/8x43DlFDZ0e/b/{slug}", name: 'certificate_public_show', methods: ['GET'])]
     /**
      * Undocumented function

@@ -1,6 +1,6 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
-    secret: '%env(APP_SECRET)%'
+    secret: "%env(APP_SECRET)%"
     #csrf_protection: true
     http_method_override: false
 
@@ -16,6 +16,8 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+    error_controller: App\Controller\ExceptionController::catchException
 
 when@test:
     framework:
