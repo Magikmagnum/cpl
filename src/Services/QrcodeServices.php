@@ -60,8 +60,14 @@ class QrcodeServices
             ->build();
 
 
-        $namePng = uniqid('', '') . '.png';
-        $result->saveToFile(\dirname(__DIR__, 2) . "/public/assets/qrcode/" . $namePng);
+        // these lines allow you ti save the qrcode as a png image at the desired address
+        /*
+            $namePng = uniqid('', '') . '.png';
+            $savePathPng = "/public/assets/qrcode/";
+
+            $result->saveToFile(\dirname(__DIR__, 2) . $savePathPng . $namePng);
+        */
+
 
         return $result->getDataUri();
     }

@@ -70,9 +70,9 @@ class CertificateController extends AbstractController
     {
         $certificate = $this->repository->find($id);
         $link = "http://192.168.0.2:8080/" . $this->root . $this->getEncodeId($certificate->getId());
-        //dd($link);
 
-        $qrcode = $qrcodeService->qrcode('http://192.168.0.2:8080/' . $this->root . $this->getEncodeId($certificate->getId()));
+
+        $qrcode = $qrcodeService->qrcode($link);
 
         return $this->render('certificate/show.html.twig', [
             'certificate' => $certificate,
@@ -82,7 +82,7 @@ class CertificateController extends AbstractController
 
 
 
-    #[Route('/', name: 'certificate_show', methods: ['GET'])]
+    #[Route('/', name: 'certificate_show_n', methods: ['GET'])]
     /**
      * Undocumented function
      *
